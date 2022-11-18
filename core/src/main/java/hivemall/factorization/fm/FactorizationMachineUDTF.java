@@ -42,6 +42,7 @@ import hivemall.utils.math.MathUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
@@ -342,7 +343,7 @@ public class FactorizationMachineUDTF extends UDTFWithOptions {
         if (inputBuf == null) {
             final File file;
             try {
-                file = File.createTempFile("hivemall_fm", ".sgmt");
+                file = Files.createTempFile("hivemall_fm", ".sgmt").toFile();
                 file.deleteOnExit();
                 if (!file.canWrite()) {
                     throw new UDFArgumentException(

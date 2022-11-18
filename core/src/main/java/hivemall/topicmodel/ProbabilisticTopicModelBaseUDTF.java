@@ -31,6 +31,7 @@ import hivemall.utils.lang.SizeOf;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -202,7 +203,7 @@ public abstract class ProbabilisticTopicModelBaseUDTF extends UDTFWithOptions {
         if (buf == null) {
             final File file;
             try {
-                file = File.createTempFile("hivemall_topicmodel", ".sgmt");
+                file = Files.createTempFile("hivemall_topicmodel", ".sgmt").toFile();
                 file.deleteOnExit();
                 if (!file.canWrite()) {
                     throw new UDFArgumentException(

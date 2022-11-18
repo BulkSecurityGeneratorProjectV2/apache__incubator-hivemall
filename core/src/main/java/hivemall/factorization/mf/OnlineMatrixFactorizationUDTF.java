@@ -30,6 +30,7 @@ import hivemall.utils.lang.Primitives;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -203,7 +204,7 @@ public abstract class OnlineMatrixFactorizationUDTF extends UDTFWithOptions
             // invoke only at task node (initialize is also invoked in compilation)
             final File file;
             try {
-                file = File.createTempFile("hivemall_mf", ".sgmt");
+                file = Files.createTempFile("hivemall_mf", ".sgmt").toFile();
                 file.deleteOnExit();
                 if (!file.canWrite()) {
                     throw new UDFArgumentException(

@@ -45,6 +45,7 @@ import hivemall.utils.lang.SizeOf;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -329,7 +330,7 @@ public abstract class GeneralLearnerBaseUDTF extends LearnerBaseUDTF {
         if (buf == null) {
             final File file;
             try {
-                file = File.createTempFile("hivemall_general_learner", ".sgmt");
+                file = Files.createTempFile("hivemall_general_learner", ".sgmt").toFile();
                 file.deleteOnExit();
                 if (!file.canWrite()) {
                     throw new UDFArgumentException(

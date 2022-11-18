@@ -44,6 +44,7 @@ import it.unimi.dsi.fastutil.ints.IntSet;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -310,7 +311,7 @@ public class SlimUDTF extends UDTFWithOptions {
             // invoke only at task node (initialize is also invoked in compilation)
             final File file;
             try {
-                file = File.createTempFile("hivemall_slim", ".sgmt"); // to save KNN data
+                file = Files.createTempFile("hivemall_slim", ".sgmt").toFile(); // to save KNN data
                 file.deleteOnExit();
                 if (!file.canWrite()) {
                     throw new UDFArgumentException(
